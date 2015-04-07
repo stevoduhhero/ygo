@@ -25,7 +25,9 @@ function Socket() {
         var rows = eventos[eventKey].split('|');
         if (events[rows[0]]) {
           events[rows[0]](rows);
-        } else events["c"](("c||" + rows.join('|')).split("|"));
+        } else {
+          events.c(("c||" + rows.join('|')).split("|"));
+        }
       }
     } else {
       if (events[data.event]) events[data.event](data);
