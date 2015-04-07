@@ -17,6 +17,12 @@ var server = http.Server(app);
 var io = socketio(server);
 
 /**
+ * Serve the static files. 
+ */
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+/**
  * GET /
  * Home page.
  */
