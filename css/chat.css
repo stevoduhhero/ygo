@@ -1,0 +1,41 @@
+body, html {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+/* normal styling */
+img {
+	max-width: 100%;
+}
+table {
+	border-collapse: collapse;
+}
+.relative, .rel {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.abs, .absolute {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.cen, .center {
+	text-align: center;
+}
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.opaque {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.5);
+	width: 100%;
+	height: 100%;
+}
