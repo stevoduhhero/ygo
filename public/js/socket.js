@@ -1,5 +1,5 @@
 function Socket() {
-	var socket = io.connect("http://elloworld.noip.me:8000");
+	var socket = io();
 	socket.on('connect', function() {
 		console.log('I AM CONNECTED!');
 	});
