@@ -12,100 +12,100 @@
     <link rel="stylesheet" href="/css/chat.css">
     <link rel="stylesheet" href="/css/game.css">
   </head>
-	<body>
-		<div id="homeScreen">
-			<div id="buttons">
-				<button id="findDuel">Find Duel</button>
-				<button onclick="vars.showDB();">Deck Builder</button>
-				<button>Leaderboard</button>
-				<div id="duels">List of duels</div>
-			</div>
-		</div>
-		<div id="game">
-			<div style="height: 100%;width: 100%;overflow: hidden;position: relative;">
-				<div style="width: 30%;" id="leftPanel" class="row">
-					<font color=white>this will eventually hold a chat, card information, buttons n shit</font>
-				</div>
-				<div style="width: 7%;position: relative;" class="row">
-					<div class="o" id="youpoints"></div>
-					<div style="height: 14.166666%;width: 100%;top: 33.5%;position: absolute;left: -3px;" class="o" id="oppbanished"></div>
-				</div>
-				<div style="width: 56%;position: relative;" class="row mainTable">
-					<div id="opphand"></div>
-					<div id="youhand"></div>
-					<div class="field phases"><div id="dp" class="phase">DP</div><div id="sp" class="phase">SP</div><div id="m1" class="phase">M1</div><div id="bp" class="phase">BP</div><div id="m2" class="phase">M2</div><div id="ep" class="phase">EP</div></div>
-					<!-- just a little bit of room so that i can put the #opphand here !-->
-					<div style="height: 5%;width: 100%;" class="row"></div>
-					<div style="height: 42.5%;width: 100%;" class="row">
-						<div style="height: 100%;width: 13.5%;" class="row">
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppdeck"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppredpendulum"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppgrave"></div>
-						</div>
-						<div style="height: 75%;width: 73%;margin-top: 5%;" class="row">
-							<div style="width: 100%;height: 50%;" class="row">
-								<div style="width: 20%;" class="row o" id="opp9"></div>
-								<div style="width: 20%;" class="row o" id="opp8"></div>
-								<div style="width: 20%;" class="row o" id="opp7"></div>
-								<div style="width: 20%;" class="row o" id="opp6"></div>
-								<div style="width: 20%;" class="row o" id="opp5"></div>
-							</div>
-							<div style="width: 100%;height: 50%;" class="row">
-								<div style="width: 20%;" class="row o" id="opp4"></div>
-								<div style="width: 20%;" class="row o" id="opp3"></div>
-								<div style="width: 20%;" class="row o" id="opp2"></div>
-								<div style="width: 20%;" class="row o" id="opp1"></div>
-								<div style="width: 20%;" class="row o" id="opp0"></div>
-							</div>
-						</div>
-						<div style="height: 100%;width: 13.5%;" class="row">
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppextra"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppbluependulum"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="oppfield"></div>
-						</div>
-					</div>
-					<div style="height: 42.5%;width: 100%;" class="row">
-						<div style="height: 100%;width: 13.5%;" class="row">
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="youfield"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="youbluependulum"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="youextra"></div>
-						</div>
-						<div style="height: 75%;width: 73%;margin-top: 5%;" class="row">
-							<div style="width: 100%;height: 50%;" class="row">
-								<div style="width: 20%;" class="row o" id="you0"></div>
-								<div style="width: 20%;" class="row o" id="you1"></div>
-								<div style="width: 20%;" class="row o" id="you2"></div>
-								<div style="width: 20%;" class="row o" id="you3"></div>
-								<div style="width: 20%;" class="row o" id="you4"></div>
-							</div>
-							<div style="width: 100%;height: 50%;" class="row">
-								<div style="width: 20%;" class="row o" id="you5"></div>
-								<div style="width: 20%;" class="row o" id="you6"></div>
-								<div style="width: 20%;" class="row o" id="you7"></div>
-								<div style="width: 20%;" class="row o" id="you8"></div>
-								<div style="width: 20%;" class="row o" id="you9"></div>
-							</div>
-						</div>
-						<div style="height: 100%;width: 13.5%;" class="row">
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="yougrave"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="youredpendulum"></div>
-							<div style="width: 100%;height: 33.3333333%;" class="row o" id="youdeck"></div>
-						</div>
-					</div>
-					<!-- just a little bit of room so that i can put the #youhand here !-->
-					<div style="height: 10%;width: 100%;" class="row"></div>
-				</div>
-				<div style="width: 7%;position: relative;" class="row">
-					<div style="height: 14.166666%;width: 100%;top: 47.5%;position: absolute;left: 3px;" class="o" id="youbanished"></div>
-					<div class="o" id="opppoints"></div>
-				</div>
-			</div>
-		</div>
-		<script>var exports = new Object();</script>
+  <body>
+    <div id="homeScreen">
+      <div id="buttons">
+        <button id="findDuel">Find Duel</button>
+        <button onclick="vars.showDB();">Deck Builder</button>
+        <button>Leaderboard</button>
+        <div id="duels">List of duels</div>
+      </div>
+    </div>
+    <div id="game">
+      <div style="height: 100%;width: 100%;overflow: hidden;position: relative;">
+        <div style="width: 30%;" id="leftPanel" class="row">
+          <font color=white>this will eventually hold a chat, card information, buttons n shit</font>
+        </div>
+        <div style="width: 7%;position: relative;" class="row">
+          <div class="o" id="youpoints"></div>
+          <div style="height: 14.166666%;width: 100%;top: 33.5%;position: absolute;left: -3px;" class="o" id="oppbanished"></div>
+        </div>
+        <div style="width: 56%;position: relative;" class="row mainTable">
+          <div id="opphand"></div>
+          <div id="youhand"></div>
+          <div class="field phases"><div id="dp" class="phase">DP</div><div id="sp" class="phase">SP</div><div id="m1" class="phase">M1</div><div id="bp" class="phase">BP</div><div id="m2" class="phase">M2</div><div id="ep" class="phase">EP</div></div>
+          <!-- just a little bit of room so that i can put the #opphand here !-->
+          <div style="height: 5%;width: 100%;" class="row"></div>
+          <div style="height: 42.5%;width: 100%;" class="row">
+            <div style="height: 100%;width: 13.5%;" class="row">
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppdeck"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppredpendulum"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppgrave"></div>
+            </div>
+            <div style="height: 75%;width: 73%;margin-top: 5%;" class="row">
+              <div style="width: 100%;height: 50%;" class="row">
+                <div style="width: 20%;" class="row o" id="opp9"></div>
+                <div style="width: 20%;" class="row o" id="opp8"></div>
+                <div style="width: 20%;" class="row o" id="opp7"></div>
+                <div style="width: 20%;" class="row o" id="opp6"></div>
+                <div style="width: 20%;" class="row o" id="opp5"></div>
+              </div>
+              <div style="width: 100%;height: 50%;" class="row">
+                <div style="width: 20%;" class="row o" id="opp4"></div>
+                <div style="width: 20%;" class="row o" id="opp3"></div>
+                <div style="width: 20%;" class="row o" id="opp2"></div>
+                <div style="width: 20%;" class="row o" id="opp1"></div>
+                <div style="width: 20%;" class="row o" id="opp0"></div>
+              </div>
+            </div>
+            <div style="height: 100%;width: 13.5%;" class="row">
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppextra"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppbluependulum"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="oppfield"></div>
+            </div>
+          </div>
+          <div style="height: 42.5%;width: 100%;" class="row">
+            <div style="height: 100%;width: 13.5%;" class="row">
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="youfield"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="youbluependulum"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="youextra"></div>
+            </div>
+            <div style="height: 75%;width: 73%;margin-top: 5%;" class="row">
+              <div style="width: 100%;height: 50%;" class="row">
+                <div style="width: 20%;" class="row o" id="you0"></div>
+                <div style="width: 20%;" class="row o" id="you1"></div>
+                <div style="width: 20%;" class="row o" id="you2"></div>
+                <div style="width: 20%;" class="row o" id="you3"></div>
+                <div style="width: 20%;" class="row o" id="you4"></div>
+              </div>
+              <div style="width: 100%;height: 50%;" class="row">
+                <div style="width: 20%;" class="row o" id="you5"></div>
+                <div style="width: 20%;" class="row o" id="you6"></div>
+                <div style="width: 20%;" class="row o" id="you7"></div>
+                <div style="width: 20%;" class="row o" id="you8"></div>
+                <div style="width: 20%;" class="row o" id="you9"></div>
+              </div>
+            </div>
+            <div style="height: 100%;width: 13.5%;" class="row">
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="yougrave"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="youredpendulum"></div>
+              <div style="width: 100%;height: 33.3333333%;" class="row o" id="youdeck"></div>
+            </div>
+          </div>
+          <!-- just a little bit of room so that i can put the #youhand here !-->
+          <div style="height: 10%;width: 100%;" class="row"></div>
+        </div>
+        <div style="width: 7%;position: relative;" class="row">
+          <div style="height: 14.166666%;width: 100%;top: 47.5%;position: absolute;left: 3px;" class="o" id="youbanished"></div>
+          <div class="o" id="opppoints"></div>
+        </div>
+      </div>
+    </div>
+    <script>var exports = new Object();</script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
-		<script src="./js/socket.js"></script>
-		<script src="./js/app.js"></script>
-		<script src="./js/domEvents.js"></script>
-	</body>
+    <script src="./js/socket.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/domEvents.js"></script>
+  </body>
 </html>

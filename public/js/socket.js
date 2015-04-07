@@ -1,17 +1,25 @@
 function Socket() {
   var socket = io();
+
   socket.on('connect', function() {
     console.log('I AM CONNECTED!');
   });
-  socket.on('e', function(data) {
-    //the data should be one biggg string like this
-    //event|data1|data2|data3\nevent2|data1|data2
 
+  /**
+   * Retriving an event.
+   *
+   * @param {Object} data
+   *
+   * The data should be one large string
+   * Example - event|data1|data2|data3\nevent|data1|data2
+   */
+
+  socket.on('e', function(data) {
     //if the data has a | in it... it might fuck it up lol
     //if it's only the last bit of data that you'll receive that may have | in it then just join all of the parts after it
     console.log(data);
     var events = this.REFERENCE.events;
-    if (typeof data == "string") {
+    if (typeof data === "string") {
       var eventos = data.split('\n');
       for (var eventKey in eventos) {
         var rows = eventos[eventKey].split('|');
@@ -23,9 +31,21 @@ function Socket() {
       if (events[data.event]) events[data.event](data);
     }
   });
+
+  /**
+   * Emit an event.
+   *
+   * @param {String} event
+   * @param {Object} data
+   */
+
   this.emit = function(event, data) {
-    var obj = new Object();
-    if (typeof data == "object") obj = data; else obj.data = data;
+    var obj = {};
+    if (typeof data === "object") {
+      obj = data; 
+    } else {
+      obj.data = data;
+    }
     obj.event = event;
     console.log(JSON.stringify(obj));
     socket.emit('e', obj);
@@ -47,5 +67,5 @@ Socket.prototype.events = {
   start: function(data) {
     $("#homeScreen").hide();
     $("#game").show();
-  },
+  }
 };
