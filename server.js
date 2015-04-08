@@ -53,7 +53,7 @@ io.on('connection', function(socket) {
   };
 
   socket.on('e', function(data) {
-    if (is.not.object(data) || is.not.propertyDefined(data, 'event')) return;
+		if (typeof data != "object" || !data.event) return;
     console.log(data.event);
     if (is.propertyDefined(events, data.event)) {
       events[data.event](user, data);
