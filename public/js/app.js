@@ -1,7 +1,7 @@
 var app = {
-	initialize: function() {
-		this.socket = new Socket();
-	},
+  initialize: function() {
+    this.socket = new Socket();
+  }
 };
 
 $(function() {

@@ -1,3 +1,3 @@
 $("#findDuel").click(function() {
-	app.socket.emit('search');
+  app.socket.emit('search');
 });

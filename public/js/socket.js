@@ -8,15 +8,13 @@ function Socket() {
   /**
    * Retriving an event.
    *
-   * @param {Object} data
+   * @param {Object or String} data
    *
    * The data should be one large string
    * Example - event|data1|data2|data3\nevent|data1|data2
    */
 
   socket.on('e', function(data) {
-    //if the data has a | in it... it might fuck it up lol
-    //if it's only the last bit of data that you'll receive that may have | in it then just join all of the parts after it
     console.log(data);
     var events = this.REFERENCE.events;
     if (typeof data === "string") {
@@ -43,7 +41,7 @@ function Socket() {
 
   this.emit = function(event, data) {
     var obj = {};
-    if (typeof data === "object") {
+    if (typeof data === 'object') {
       obj = data; 
     } else {
       obj.data = data;
