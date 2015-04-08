@@ -64,8 +64,17 @@ Socket.prototype.events = {
       $("#findDuel").html("Find Duel");
     }
   },
-  start: function(data) {
-    $("#homeScreen").hide();
-    $("#game").show();
+  g: function(data) {
+		//all events that have to do with the game
+		switch(data[1]) {
+			case 'start':
+				$("#homeScreen").hide();
+				$("#game").show();
+				break;
+				
+			case 'draw':
+				
+				break;
+		}
   }
 };
