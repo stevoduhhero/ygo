@@ -5,7 +5,6 @@
 var chalk = require('chalk');
 var express = require('express');
 var http = require('http');
-var is = require('is_js');
 var path = require('path');
 var socketio = require('socket.io');
 
@@ -53,9 +52,9 @@ io.on('connection', function(socket) {
   };
 
   socket.on('e', function(data) {
-		if (typeof data != "object" || !data.event) return;
+		if (typeof data !== "object" || !data.event) return;
     console.log(data.event);
-    if (is.propertyDefined(events, data.event)) {
+    if (events[data.event]) {
       events[data.event](user, data);
     }
   });
