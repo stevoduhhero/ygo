@@ -66,14 +66,47 @@ Socket.prototype.events = {
   },
   g: function(data) {
 		//all events that have to do with the game
-		switch(data[1]) {
+		data.splice(0, 1);
+		switch(data[0]) {
 			case 'start':
-				$("#homeScreen").hide();
-				$("#game").show();
+				function startGame(you) {
+					function Side(game, player) {
+						this.player = player;
+						this.game = game;
+						return this;
+					}
+					Side.prototype.opp = function() {
+						var opp = "p1";
+						if (this.player == "p1") opp = "p2";
+						return this.game[opp];
+					};
+					Side.prototype.who = function() {
+						if (this === this.game.you) return "you";
+						return "opp";
+					};
+					Side.prototype.draw = function(card) {
+						this.hand.push(Number(cardId));
+						//move card element from deck to hand and add it to hand element
+					};
+					$("#homeScreen").hide();
+					$("#game").show();
+					app.game = {
+					
+					};
+					app.game.p1 = Side(game, "p1");
+					app.game.p2 = Side(game, "p2");
+					app.game.you = app.game[you];
+					app.game.opp = app.game[you].opp();
+				}
+				var youPlayer = data[1];
+				startGame(youPlayer);
 				break;
 				
 			case 'draw':
-				
+				var player = data[1];
+				var cardId = Number(data[2]);
+				var side = app.game[player];
+				side.draw(Number(cardId));
 				break;
 		}
   }
