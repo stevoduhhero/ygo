@@ -18,7 +18,7 @@ function Game(you) {
 	Side.prototype.draw = function(card, callback) {
 		var self = this;
 		var img = cardImg(card);
-		img.copy($("#" + self.who() + "deck")).toBody().moveTo($("#" + self.who() + "hand"), 250, function() {
+		if (moveTo.length == 0) moveTo = $("#" + self.who() + "hand"); //no cards in hand so move to center of hand
 			self.hand.push(card);
 			$(img).clone().removeAttr('style').appendTo("#" + self.who() + "hand");
 			$(img).remove();
