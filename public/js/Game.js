@@ -69,6 +69,23 @@ Game.prototype.nextQueue = function() {
 	}
 };
 Game.prototype.drop = function(drag) {
-		$(drag.source).clone().appendTo(drag.target);
-		drag.source.remove();
+	$(drag.source).clone().appendTo(drag.target); //remove this when done
+	drag.source.remove(); //remove this when done
+	
+	//TODO: figure the undefined's out
+	var source = {
+		list: undefined,
+		slot: undefined
+	};
+	var target = {
+		list: undefined,
+		slot: undefined
+	};
+	if (source.list === target.list) {
+		if (source.list === "field") {
+			if (source.slot === target.slot) return;
+			//moving zones
+		} else return;
+	}
+	//moving lists
 };

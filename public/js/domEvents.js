@@ -5,9 +5,9 @@ $("#findDuel").click(function() {
 	var draggables = [
 		"#youhand img",
 		"#youSide .fieldZone img",
-		"#youredpendulum img",
-		"#youbluependulum img",
-		"#youfield img"
+		"#you10 img",
+		"#you11 img",
+		"#you12 img"
 	];
 	var droppables = [
 		"#youSide .o",
@@ -31,6 +31,7 @@ $("#findDuel").click(function() {
 		return false;
 	});
 	$(document).on("mousemove touchmove", function(touch) {
+		if (touch.originalEvent.touches) touch = touch.originalEvent.touches[0];
 		if (!app.dragging) return;
 		//unset drop target
 		delete app.dragging.target;
