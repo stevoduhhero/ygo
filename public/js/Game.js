@@ -20,7 +20,7 @@ function Game(you) {
 		var img = cardImg(card);
 		var moveTo = $("#" + self.who() + "hand img").last(); //move to last img in hand
 		if (moveTo.length == 0) moveTo = $("#" + self.who() + "hand"); //no cards in hand so move to center of hand
-		img.copy($("#" + self.who() + "deck")).toBody().moveTo(moveTo, 250, function() {
+		img.copy($("#" + self.who() + "deck"), true).toBody().moveTo(moveTo, 250, function() {
 			self.hand.push(card);
 			$(img).clone().removeAttr('style').appendTo("#" + self.who() + "hand");
 			$(img).remove();

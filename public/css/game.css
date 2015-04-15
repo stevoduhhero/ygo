@@ -229,6 +229,12 @@
 	width: 7%;
 	position: relative;
 }
+.youredpendulum, .oppredpendulum {
+	outline: 1px solid red;
+}
+.youbluependulum, .oppbluependulum {
+	outline: 1px solid blue;
+}
 .dropTarget {
 	background: rgba(255, 255, 255, 0.5);
 }

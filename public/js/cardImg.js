@@ -9,12 +9,13 @@ function cardImg(card, dontAnimate) {
 		img.style.top = '0px';
 		img.style.left = '0px';
 		img.style.display = 'none';
-		img.copy = function(el) {
+		img.copy = function(el, justHeight) {
 			var el = jQuery(el);
-			jQuery(this).width(el.width()).height(el.height()).css({
+			jQuery(this).height(el.height()).css({
 				left: el.offset().left + 'px',
 				top: el.offset().top + 'px'
 			});
+			if (!justHeight) jQuery(this).width(el.width());
 			return this;
 		};
 		img.toBody = function() {
