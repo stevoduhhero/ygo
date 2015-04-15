@@ -68,3 +68,7 @@ Game.prototype.nextQueue = function() {
 			break;
 	}
 };
+Game.prototype.drop = function(drag) {
+		$(drag.source).clone().appendTo(drag.target);
+		drag.source.remove();
+};

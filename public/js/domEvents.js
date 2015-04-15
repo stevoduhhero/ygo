@@ -4,11 +4,16 @@ $("#findDuel").click(function() {
 (function gameDragDropEvents() {
 	var draggables = [
 		"#youhand img",
-		
+		"#youSide .fieldZone img",
+		"#youredpendulum img",
+		"#youbluependulum img",
+		"#youfield img"
 	];
 	var droppables = [
-		".o",
-		
+		"#youSide .o",
+		"#oppSide .fieldZone",
+		"#youbanished",
+		"#youhand"
 	];
 	$("body").on("mousedown touchstart", draggables.join(','), function(touch) {
 		$("body").addClass("unselectable");
@@ -32,9 +37,11 @@ $("#findDuel").click(function() {
 		$(".dropTarget").removeClass("dropTarget");
 
 		//see if we have our mouse over any droppables
-		for (var i in droppables) {
+		var len = droppables.length;
+		for (var i = 0; i < len; i++) {
 			var els = $(droppables[i]);
-			for (var x in els) {
+			var elCount = els.length;
+			for (var x = 0; x < elCount; x++) {
 				if (!isNaN(x)) {
 					var el = $(els[x]);
 					var offset = el.offset();
@@ -72,9 +79,8 @@ $("#findDuel").click(function() {
 				drag.ghost.remove();
 			}
 			if (!drag || !drag.target) return;
-			$(drag.source).clone().appendTo(drag.target);
 			$(drag.target).removeClass("dropTarget");
-			drag.source.remove();
+			app.game.drop(drag);
 		}
 		drop(app.dragging);
 		delete app.dragging;
