@@ -229,3 +229,6 @@
 	width: 7%;
 	position: relative;
 }
+.dropTarget {
+	outline: 1px solid red;
+}
