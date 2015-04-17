@@ -75,8 +75,7 @@ Socket.prototype.events = {
 				break;
 			
 			case 'start':
-				var youPlayer = data[1];
-				app.game = new Game(youPlayer);
+				app.game = new Game(data);
 				break;
 		}
   }
