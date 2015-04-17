@@ -190,8 +190,13 @@ Game.prototype.drop = function(drag) {
 		if (target.who === "opp" && target.list === "field") {
 			if (this.opp.field[target.zone].length) return; //there's already a card on this zone
 		}
-		if (target.who == "you" && target.list === "field") {
+		if (target.who === "you" && target.list === "field") {
 			alert("prompt to determine what position to summon in");
+			return;
+		}
+		if (target.list === "deck") {
+			//top === (target.pos = 0) bottom === (target.pos = 1)
+			alert("prompt to determine where to place card (top/bottom)");
 			return;
 		}
 		//moving lists
