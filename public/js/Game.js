@@ -56,7 +56,7 @@ Game.prototype.parseStartData = function(data) {
         return obj;
     }
     var you = data[1];
-    var data = {
+    data = {
         name: data[2].split(','),
         points: data[3].split(','),
         mainCount: data[4].split(','),
@@ -160,8 +160,8 @@ Game.prototype.update = function(info) {
             cardEl.appendTo(el);
         }
     } else if (info.list === "hand") {
-        var el = $("#" + player.who() + "hand").empty();
-        var len = player.hand.length;
+        el = $("#" + player.who() + "hand").empty();
+        len = player.hand.length;
         var revealedCards = false;
         for (var i = 0; i < len; i++) {
             var card = player.hand[i];

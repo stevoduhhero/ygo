@@ -11,7 +11,7 @@ function cardImg(card, dontAnimate) {
         img.style.left = '0px';
         img.style.display = 'none';
         img.copy = function(el, justHeight) {
-            var el = jQuery(el);
+            el = jQuery(el);
             jQuery(this).height(el.height()).css({
                 left: el.offset().left + 'px',
                 top: el.offset().top + 'px'
