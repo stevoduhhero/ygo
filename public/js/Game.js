@@ -404,7 +404,7 @@ Game.prototype.move = function(cardId, source, target, callback) {
 	img.copy(start, true).toBody();
 	start.hide();
 	if (source.who === "opp") $(img).addClass("v");
-	img.moveTo(moveTo, 1000, function() {
+	img.moveTo(moveTo, 500, function() {
 		$(img).remove();
 		start.remove();
 		self.update(target);
