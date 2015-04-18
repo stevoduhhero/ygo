@@ -2,6 +2,7 @@ function cardImg(card, dontAnimate) {
 	var img = new Image();
 	var src = './img/default.jpg';
 	if (card === -1) src = './img/back.png';
+	if (card === -2) src = './img/deck.png';
 	img.src = src;
 	img.draggable = false;
 	if (dontAnimate) {} else {

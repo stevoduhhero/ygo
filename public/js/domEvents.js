@@ -38,6 +38,8 @@ $("#findDuel").click(function() {
 		$(".dropTarget").removeClass("dropTarget");
 
 		//see if we have our mouse over any droppables
+		var viableDroppables = 0;
+		var skippedHand = false;
 		var len = droppables.length;
 		for (var i = 0; i < len; i++) {
 			var els = $(droppables[i]);
@@ -59,11 +61,21 @@ $("#findDuel").click(function() {
 					if ((borders.min.x <= touch.pageX && borders.max.x >= touch.pageX) && (borders.min.y <= touch.pageY && borders.max.y >= touch.pageY)) {
 						//mousing over this element
 						//set drop target
+						viableDroppables++;
+						if (el.attr('id') === "youhand") {
+							skippedHand = true;
+							continue;
+						}
 						app.dragging.target = el;
 						$(el).addClass("dropTarget");
 					}
 				}
 			}
+		}
+		
+		if (viableDroppables === 1 && skippedHand) {
+			var el = $("#youhand").addClass("dropTarget");
+			app.dragging.target = el[0];
 		}
 		
 		app.dragging.ghost.css({
