@@ -307,27 +307,8 @@ Game.prototype.drop = function(drag) {
 		});
 	}
 };
-Game.prototype.prompts = {};
 Game.prototype.prompt = function(source, target) {
-	if (target.list === "deck") {
-		//top or bottom of deck
-	}
-	if (target.list === "field") {
-		var spellTrap = false;
-		var positions = [0, 1, 2, 3];
-		if (target.zone > 4) spellTrap = true;
-		if (spellTrap) positions = [0, 2];
-		var positionCount = positions.length;
-		var prompt = $('<div class="prompt"></div>');
-		for (var i = 0; i < positionCount; i++) {
-			var pos = positions[positionCount];
-			if (position === 0) prompt.append(cardImg(cardId, true)); //faceup
-			if (position === 1) prompt.append($(cardImg(cardId, true)).addClass("defense")); //faceupdefense
-			if (position === 2) prompt.append(cardImg(-1, true)); //facedown
-			if (position === 3) prompt.append($(cardImg(-1, true)).addClass("defense")); //facedowndefense
-		}
-		prompt.appendTo("body");
-	}
+	
 };
 Game.prototype.move = function(cardId, source, target, callback) {
 	var self = this;

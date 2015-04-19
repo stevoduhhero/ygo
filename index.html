@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>YGOSiM</title>
@@ -11,105 +12,119 @@
     <link rel="stylesheet" href="/css/primer.css">
     <link rel="stylesheet" href="/css/chat.css">
     <link rel="stylesheet" href="/css/game.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="homeScreen" class="container">
-      <h1>YGOSIM</h1>
-      <div id="buttons">
-        <button id="findDuel" class="btn">Find Duel</button>
-        <button onclick="vars.showDB();" class="btn">Deck Builder</button>
-        <button class="btn">Leaderboard</button>
-        <div id="duels"><h3>List of duels</h3></div>
-      </div>
+        <h1>YGOSIM</h1>
+        <div id="buttons">
+            <button id="findDuel" class="btn">Find Duel</button>
+            <button onclick="vars.showDB();" class="btn">Deck Builder</button>
+            <button class="btn">Leaderboard</button>
+            <div id="duels">
+                <h3>List of duels</h3></div>
+        </div>
     </div>
-    <div id="game">
-      <div class="relative">
-        <div id="leftPanel" class="row">
-          <font color="white">this will eventually hold a chat, card information, buttons n shit</font>
-        </div>
-        <div class="banishedColumn row">
-          <div class="o" id="youpoints"></div>
-          <div class="o" id="opppoints"></div>
-          <div class="oppBanishedZone o" id="oppbanished"></div>
-        </div>
-        <div class="row mainTable">
-          <div id="opphand"></div>
-          <div id="youhand"></div>
-          <div class="field phases"><div id="dp" class="phase">DP</div><div id="sp" class="phase">SP</div><div id="m1" class="phase">M1</div><div id="bp" class="phase">BP</div><div id="m2" class="phase">M2</div><div id="ep" class="phase">EP</div></div>
-          <!-- just a little bit of room so that i can put the #opphand here !-->
-          <div class="fieldHandSpacer row"></div>
-          <div id="oppSide" class="fieldContainer row">
-            <div class="threeVerticalZones row">
-              <div class="singleVerticalZone row o" id="oppdeck"></div>
-              <div class="oppredpendulum singleVerticalZone row o" id="opp12"></div>
-              <div class="singleVerticalZone row o" id="oppgrave"></div>
+    <ul class="pages">
+        <li class="chat page">
+            <div class="chatArea">
+                <ul class="messages"></ul>
             </div>
-            <div class="monsterSpellZones row">
-              <div class="monsterSpellZonesDivison row">
-                <div class="fieldZone row o" id="opp9"></div>
-                <div class="fieldZone row o" id="opp8"></div>
-                <div class="fieldZone row o" id="opp7"></div>
-                <div class="fieldZone row o" id="opp6"></div>
-                <div class="fieldZone row o" id="opp5"></div>
-              </div>
-              <div class="monsterSpellZonesDivison row">
-                <div class="fieldZone row o" id="opp4"></div>
-                <div class="fieldZone row o" id="opp3"></div>
-                <div class="fieldZone row o" id="opp2"></div>
-                <div class="fieldZone row o" id="opp1"></div>
-                <div class="fieldZone row o" id="opp0"></div>
-              </div>
+            <input class="inputMessage" placeholder="Type here..." />
+        </li>
+        <li class="login page">
+            <div class="form">
+                <h3 class="title">What's your nickname?</h3>
+                <input class="usernameInput" type="text" maxlength="14" />
             </div>
-<<<<<<< HEAD
         </li>
     </ul>
     <div id="game">
         <div class="relative">
             <div id="leftPanel" class="row">
                 <font color="white">this will eventually hold a chat, card information, buttons n shit</font>
-=======
-            <div class="threeVerticalZones row">
-              <div class="singleVerticalZone row o" id="oppextra"></div>
-              <div class="oppbluependulum singleVerticalZone row o" id="opp11"></div>
-              <div class="singleVerticalZone row o" id="opp10"></div>
->>>>>>> parent of 47471fc... Add chat
             </div>
-          </div>
-          <div id="youSide" class="fieldContainer row">
-            <div class="threeVerticalZones row">
-              <div class="singleVerticalZone row o" id="you10"></div>
-              <div class="youbluependulum singleVerticalZone row o" id="you11"></div>
-              <div class="singleVerticalZone row o" id="youextra"></div>
+            <div class="banishedColumn row">
+                <div class="o" id="youpoints"></div>
+                <div class="o" id="opppoints"></div>
+                <div class="oppBanishedZone o" id="oppbanished"></div>
             </div>
-            <div class="monsterSpellZones row">
-              <div class="monsterSpellZonesDivison row">
-                <div class="fieldZone row o" id="you0"></div>
-                <div class="fieldZone row o" id="you1"></div>
-                <div class="fieldZone row o" id="you2"></div>
-                <div class="fieldZone row o" id="you3"></div>
-                <div class="fieldZone row o" id="you4"></div>
-              </div>
-              <div class="monsterSpellZonesDivison row">
-                <div class="fieldZone row o" id="you5"></div>
-                <div class="fieldZone row o" id="you6"></div>
-                <div class="fieldZone row o" id="you7"></div>
-                <div class="fieldZone row o" id="you8"></div>
-                <div class="fieldZone row o" id="you9"></div>
-              </div>
+            <div class="row mainTable">
+                <div id="opphand"></div>
+                <div id="youhand"></div>
+                <div class="field phases">
+                    <div id="dp" class="phase">DP</div>
+                    <div id="sp" class="phase">SP</div>
+                    <div id="m1" class="phase">M1</div>
+                    <div id="bp" class="phase">BP</div>
+                    <div id="m2" class="phase">M2</div>
+                    <div id="ep" class="phase">EP</div>
+                </div>
+                <!-- just a little bit of room so that i can put the #opphand here !-->
+                <div class="fieldHandSpacer row"></div>
+                <div id="oppSide" class="fieldContainer row">
+                    <div class="threeVerticalZones row">
+                        <div class="singleVerticalZone row o" id="oppdeck"></div>
+                        <div class="oppredpendulum singleVerticalZone row o" id="opp12"></div>
+                        <div class="singleVerticalZone row o" id="oppgrave"></div>
+                    </div>
+                    <div class="monsterSpellZones row">
+                        <div class="monsterSpellZonesDivison row">
+                            <div class="fieldZone row o" id="opp9"></div>
+                            <div class="fieldZone row o" id="opp8"></div>
+                            <div class="fieldZone row o" id="opp7"></div>
+                            <div class="fieldZone row o" id="opp6"></div>
+                            <div class="fieldZone row o" id="opp5"></div>
+                        </div>
+                        <div class="monsterSpellZonesDivison row">
+                            <div class="fieldZone row o" id="opp4"></div>
+                            <div class="fieldZone row o" id="opp3"></div>
+                            <div class="fieldZone row o" id="opp2"></div>
+                            <div class="fieldZone row o" id="opp1"></div>
+                            <div class="fieldZone row o" id="opp0"></div>
+                        </div>
+                    </div>
+                    <div class="threeVerticalZones row">
+                        <div class="singleVerticalZone row o" id="oppextra"></div>
+                        <div class="oppbluependulum singleVerticalZone row o" id="opp11"></div>
+                        <div class="singleVerticalZone row o" id="opp10"></div>
+                    </div>
+                </div>
+                <div id="youSide" class="fieldContainer row">
+                    <div class="threeVerticalZones row">
+                        <div class="singleVerticalZone row o" id="you10"></div>
+                        <div class="youbluependulum singleVerticalZone row o" id="you11"></div>
+                        <div class="singleVerticalZone row o" id="youextra"></div>
+                    </div>
+                    <div class="monsterSpellZones row">
+                        <div class="monsterSpellZonesDivison row">
+                            <div class="fieldZone row o" id="you0"></div>
+                            <div class="fieldZone row o" id="you1"></div>
+                            <div class="fieldZone row o" id="you2"></div>
+                            <div class="fieldZone row o" id="you3"></div>
+                            <div class="fieldZone row o" id="you4"></div>
+                        </div>
+                        <div class="monsterSpellZonesDivison row">
+                            <div class="fieldZone row o" id="you5"></div>
+                            <div class="fieldZone row o" id="you6"></div>
+                            <div class="fieldZone row o" id="you7"></div>
+                            <div class="fieldZone row o" id="you8"></div>
+                            <div class="fieldZone row o" id="you9"></div>
+                        </div>
+                    </div>
+                    <div class="threeVerticalZones row">
+                        <div class="singleVerticalZone row o" id="yougrave"></div>
+                        <div class="youredpendulum singleVerticalZone row o" id="you12"></div>
+                        <div class="singleVerticalZone row o" id="youdeck"></div>
+                    </div>
+                </div>
+                <!-- just a little bit of room so that i can put the #youhand here !-->
+                <div class="fieldHandSpacer2 row"></div>
             </div>
-            <div class="threeVerticalZones row">
-              <div class="singleVerticalZone row o" id="yougrave"></div>
-              <div class="youredpendulum singleVerticalZone row o" id="you12"></div>
-              <div class="singleVerticalZone row o" id="youdeck"></div>
+            <div class="banishedColumn row">
+                <div class="youBanishedZone o" id="youbanished"></div>
             </div>
-          </div>
-          <!-- just a little bit of room so that i can put the #youhand here !-->
-          <div class="fieldHandSpacer2 row"></div>
         </div>
-        <div class="banishedColumn row">
-          <div class="youBanishedZone o" id="youbanished"></div>
-        </div>
-      </div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -119,11 +134,7 @@
     <script src="./js/domEvents.js"></script>
     <script src="./js/cardImg.js"></script>
     <script src="./js/Game.js"></script>
-<<<<<<< HEAD
     <script src="./js/chat.js"></script>
 </body>
 
-=======
-  </body>
->>>>>>> parent of 47471fc... Add chat
 </html>
