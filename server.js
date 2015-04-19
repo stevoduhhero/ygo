@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 /**
@@ -38,29 +38,29 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
 
-    var user = socket;
+	var user = socket;
 
-    /**
-     * Send an event.
-     *
-     * @param {Object} data
-     */
+	/**
+	 * Send an event.
+	 *
+	 * @param {Object} data
+	 */
 
-    user.send = function(data) {
-        user.emit('e', data);
-    };
+	user.send = function(data) {
+		user.emit('e', data);
+	};
 
-    socket.on('e', function(data) {
-        if (typeof data !== "object" || !data.event) return;
-        console.log(data.event);
-        if (events[data.event]) {
-            events[data.event](user, data);
-        }
-    });
+	socket.on('e', function(data) {
+		if (typeof data !== "object" || !data.event) return;
+		console.log(data.event);
+		if (events[data.event]) {
+			events[data.event](user, data);
+		}
+	});
 
-    socket.on('disconnect', function() {
-        console.log('a user disconnected');
-    });
+	socket.on('disconnect', function() {
+		console.log('a user disconnected');
+	});
 
 });
 
@@ -70,7 +70,7 @@ io.on('connection', function(socket) {
 
 app.set('port', 8000);
 server.listen(app.get('port'), function() {
-    var env = '\n[' + chalk.green(app.get('env')) + ']';
-    var port = chalk.magenta(app.get('port'));
-    console.log(env + ' Listening on port ' + port + '...\n');
+	var env = '\n[' + chalk.green(app.get('env')) + ']';
+	var port = chalk.magenta(app.get('port'));
+	console.log(env + ' Listening on port ' + port + '...\n');
 });
