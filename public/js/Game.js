@@ -155,7 +155,9 @@ Game.prototype.update = function(info) {
 		var len = player.field[info.zone].length;
 		for (var i = 0; i < len; i++) {
 			var card = player.field[info.zone][i];
-			var cardEl = $(cardImg(card.id, true));
+			var revealedId = card.id;
+			if (card.pos === 2 || card.pos === 3) revealedId = -1;
+			var cardEl = $(cardImg(revealedId, true));
 			if (player.who() === "opp") cardEl.addClass("v");
 			if (card.pos === 1 || card.pos === 3) cardEl.addClass("defense");
 			cardEl.appendTo(el);
@@ -231,7 +233,7 @@ Game.prototype.nextQueue = function() {
 			break;
 
 		case 'draw':
-				var player = data[1];
+			var player = data[1];
 			var cardId = Number(data[2]);
 			var side = self[player];
 			side.draw(Number(cardId), function() {
@@ -309,25 +311,48 @@ Game.prototype.drop = function(drag) {
 };
 Game.prototype.prompts = {};
 Game.prototype.prompt = function(source, target) {
+	var id = new Date() / 1;
+	$('<div id="promptOpaqueness' + id + '" class="promptOpaqueness"></div').appendTo("body");
 	if (target.list === "deck") {
 		//top or bottom of deck
 	}
 	if (target.list === "field") {
+		var cardId = this.you[source.list];
+		if (source.list === "field") {
+			cardId = cardId[source.zone][source.slot].id;
+		} else cardId = cardId[source.slot];
 		var spellTrap = false;
-		var positions = [0, 1, 2, 3];
+		var positions = [3, 0, 1];
 		if (target.zone > 4) spellTrap = true;
 		if (spellTrap) positions = [0, 2];
 		var positionCount = positions.length;
-		var prompt = $('<div class="prompt"></div>');
+		var prompt = $('<div id="prompt' + id + '" class="prompt abs"></div>');
 		for (var i = 0; i < positionCount; i++) {
-			var pos = positions[positionCount];
-			if (position === 0) prompt.append(cardImg(cardId, true)); //faceup
-			if (position === 1) prompt.append($(cardImg(cardId, true)).addClass("defense")); //faceupdefense
-			if (position === 2) prompt.append(cardImg(-1, true)); //facedown
-			if (position === 3) prompt.append($(cardImg(-1, true)).addClass("defense")); //facedowndefense
+			var position = positions[i];
+			if (position === 0) prompt.append($(cardImg(cardId, true)).attr("id", position)); //faceup
+			if (position === 1) prompt.append($(cardImg(cardId, true)).attr("id", position).addClass("defense")); //faceupdefense
+			if (position === 2) prompt.append($(cardImg(-1, true)).attr("id", position)); //facedown
+			if (position === 3) prompt.append($(cardImg(-1, true)).attr("id", position).addClass("defense")); //facedowndefense
 		}
 		prompt.appendTo("body");
 	}
+	this.prompts[id] = [source, target];
+};
+Game.prototype.promptRemove = function(id) {
+	delete this.prompts[id];
+	$("#prompt" + id).remove();
+	$("#promptOpaqueness" + id).remove();
+};
+Game.prototype.promptRespond = function(id, el) {
+	var prompt = this.prompts[id];
+	var source = prompt[0];
+	var target = prompt[1];
+	this.promptRemove(id);
+	target.pos = Number(el.id);
+	app.socket.emit('move', {
+		source: source,
+		target: target
+	});
 };
 Game.prototype.move = function(cardId, source, target, callback) {
 	var self = this;
@@ -386,16 +411,17 @@ Game.prototype.move = function(cardId, source, target, callback) {
 				cardCache = sourcePlayer[source.list][source.zone][source.slot].id;
 				sourcePlayer[source.list][source.zone].splice(source.slot, 1);
 			} else sourcePlayer[source.list].splice(source.slot, 1);
-			if (target.list === "field") {
-				cardCache = {
-					id: cardCache,
-					pos: target.pos
-				};
-			}
 			if (target.list === "deck" && (!target.pos || target.pos === 0)) {
 				targetPlayer[target.list].unshift(cardCache); //at the top of the deck
 			} else {
-				targetPlayer[target.list].push(cardCache);
+				var pushObj = cardCache;
+				if (target.list === "field") {
+					pushObj = {
+						id: cardCache,
+						pos: target.pos
+					};
+					targetPlayer[target.list][target.zone].push(pushObj);
+				} else targetPlayer[target.list].push(pushObj);
 			}
 			revealId = true;
 			if (target.pos === 2 || target.pos === 3) revealId = false;

@@ -1,6 +1,13 @@
 $("#findDuel").click(function() {
 	app.socket.emit('search');
 });
+$("body").on("click", ".promptOpaqueness", function() {
+	var id = this.id.replace('promptOpaqueness', '');
+	app.game.promptRemove(id);
+}).on("click", ".prompt img", function() {
+	var id = $(this).parent().attr('id').replace('prompt', '');
+	app.game.promptRespond(id, this);
+});
 (function gameDragDropEvents() {
 	var draggables = [
 		"#youhand img",
