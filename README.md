@@ -2,7 +2,7 @@
 
 Manual Yu-Gi-Oh! simulator.
 
-[DEMO](http://elloworld.noip.me/ygo)
+[DEMO](http://elloworld.noip.me:8000/)
 
 # Getting Started
 
