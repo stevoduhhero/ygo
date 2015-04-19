@@ -149,8 +149,9 @@ Game.prototype.updateListCounts = function() {
 };
 Game.prototype.update = function(info) {
     var player = this[info.who];
+		var el;
     if (info.list === "field") {
-        var el = $("#" + player.who() + info.zone).empty();
+        el = $("#" + player.who() + info.zone).empty();
         var len = player.field[info.zone].length;
         for (var i = 0; i < len; i++) {
             var card = player.field[info.zone][i];
